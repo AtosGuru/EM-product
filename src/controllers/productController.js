@@ -31,6 +31,32 @@ exports.getAllProducts = asyncErrorHandler(async (req, res, next) => {
     });
 });
 
+//Get All Products -- ATOS
+exports.getAllProducts = asyncErrorHandler(async(req, res, next) => {
+
+    const resultPerPage = 12;
+    const productsCount = Product.countDocuments();
+
+    const searchFeature = new searchFeature(Product.find(), req.query).search().filter();
+    
+    let products = await searchFeature.query;
+    
+    searchFeature.pagination(resultPerPage);
+
+    products = await searchFeature.query.clone();
+
+    let filteredProductsCount = products.length;
+
+    res.status(200).json({
+        success: true,
+        products,
+        productsCount,
+        resultPerPage,
+        filteredProductsCount,
+    })
+    
+})
+
 // Get All Products ---Product Sliders
 exports.getProducts = asyncErrorHandler(async (req, res, next) => {
     const products = await Product.find();

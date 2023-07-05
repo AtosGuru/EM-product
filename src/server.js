@@ -4,12 +4,12 @@ const cloudinary = require('cloudinary');
 const PORT = process.env.PORT || 4000;
 
 // UncaughtException Error
-process.on('uncaughtException', (err) => {
-    console.log(`Error: ${err.message}`);
-    process.exit(1);
-});
+// process.on('uncaughtException', (err) => {
+//     console.log(`Error: ${err.message}`);
+//     process.exit(1);
+// });
 
-// connectDatabase();
+//connectDatabase();
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_NAME,

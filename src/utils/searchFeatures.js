@@ -1,4 +1,4 @@
-class SearchFeatures {
+ class SearchFeatures {
     constructor(query, queryString) {
         this.query = query
         this.queryString = queryString

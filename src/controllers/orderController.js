@@ -62,9 +62,8 @@ exports.getSingleOrderDetails = asyncErrorHandler(async (req, res, next) => {
     });
 });
 
-
 // Get Logged In User Orders
-exports.myOrders = asyncErrorHandler(async (req, res, next) => {
+exports.myOrders = asyncErrorHandler(async (req, res, next) => {    
 
     const orders = await Order.find({ user: req.user._id });
 
@@ -77,7 +76,6 @@ exports.myOrders = asyncErrorHandler(async (req, res, next) => {
         orders,
     });
 });
-
 
 // Get All Orders ---ADMIN
 exports.getAllOrders = asyncErrorHandler(async (req, res, next) => {
@@ -132,6 +130,7 @@ exports.updateOrder = asyncErrorHandler(async (req, res, next) => {
     });
 });
 
+// Update Stock Of Product
 async function updateStock(id, quantity) {
     const product = await Product.findById(id);
     product.stock -= quantity;
@@ -153,3 +152,4 @@ exports.deleteOrder = asyncErrorHandler(async (req, res, next) => {
         success: true,
     });
 });
+

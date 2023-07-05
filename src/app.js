@@ -9,7 +9,8 @@ const app = express();
 
 // config
 if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config({ path: 'backend/config/config.env' });
+    require('dotenv').config({ path: 'src/config/config.env' });
+    // require('dotenv').config({ path: 'backend/config/config.env' });
 }
 
 app.use(express.json());
